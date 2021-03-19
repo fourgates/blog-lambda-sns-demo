@@ -1,0 +1,10 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "blog-lambda-sns"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1hgmjzen3a2e9"
+s3_prefix = "blog-lambda-sns"
+region = "us-east-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
