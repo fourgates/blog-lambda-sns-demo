@@ -4,9 +4,9 @@ const AWS = require("aws-sdk");
  * A Lambda function that sends a SNS message
  *
  */
-exports.handler = async () => {
+exports.handler = (event, context) => {
     const message = 'Hello from Lambda!';
-    return sendEmail(message).promise((err,data)=>{
+    return sendEmail(message).then((err,data)=>{
         console.log ("We are in the callback!");
         if (err) {
             console.log('Error sending a message', err);
@@ -30,5 +30,5 @@ function sendEmail(message){
       TopicArn: snsTopic
     };
     var sns = new AWS.SNS({ region: awsRegion });
-    return sns.publish(params);
+    return sns.publish(params).promise();
 }
